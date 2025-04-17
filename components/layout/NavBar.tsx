@@ -4,6 +4,8 @@ import SearchInput from "./SearchInput";
 import Notifications from "./Notifications";
 import ThemeToggle from "./ThemeToggle";
 import UserButton from "./UserButton";
+import Link from "next/link";
+
 
 
 const NavBar = () => {
@@ -20,7 +22,11 @@ const NavBar = () => {
           <div className="flex gap-5 sm:gap-8 items-center">
             <ThemeToggle />
             <Notifications />            
-            <UserButton />         
+            <UserButton /> 
+            <>
+              <Link href="/login">Login</Link>
+              <Link href="/register">Register</Link>
+            </>      
 
           </div>
         </div>

@@ -9,7 +9,7 @@ const UserButton = () => {
       <DropdownMenu>
         <DropdownMenuTrigger>
           <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarImage src="" />
               <AvatarFallback className="border-2 border-slate-500 dark:border-slate-50">
                 <UserRound />
               </AvatarFallback>
