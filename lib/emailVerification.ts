@@ -34,9 +34,10 @@ export const generateEmailVerificationToken = async (email: string) => {
   return emailVerificationToken;
 };
 
+//  http://localhost:3000/email-verification=8531aaf2-b3a9-4038-b721-776430c2729e
 export const sendEmailVerificationToken = async (email: string, token: string) => {
   const resend = new Resend(process.env.RESEND_API_KEY as string)  
-  const emailVerificationLink = `${process.env.NEXTAUTH_URL}/email-verification=${token}`
+  const emailVerificationLink = `${process.env.NEXTAUTH_URL}/email-verification?token=${token}`
 
   const res = await resend.emails.send({
     from: "onboarding@resend.dev",

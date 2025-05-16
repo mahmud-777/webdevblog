@@ -7,6 +7,7 @@ import NavBar from "@/components/layout/NavBar";
 import { ThemeProvider } from "next-themes";
 import { auth } from "@/auth";
 import { SessionProvider } from "next-auth/react";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -31,6 +32,8 @@ export default async function RootLayout({
   const session = await auth();
 
   return (
+    <EdgeStoreProvider>
+
     <SessionProvider session={session}>
 
       <html lang="en" suppressHydrationWarning >
@@ -47,5 +50,6 @@ export default async function RootLayout({
         </body>
       </html>
     </SessionProvider>
+    </EdgeStoreProvider>
   );
 }

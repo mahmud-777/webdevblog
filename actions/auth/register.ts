@@ -31,7 +31,15 @@ export const signUp = async (values: RegisterSchemaType) => {
     }
   });
 
-  return {success: "User created successfully!"}
+  // const emailVerificationToken = await generateEmailVerificationToken(email)
+  // const {error } = await sendEmailVerificationToken(emailVerificationToken.email, emailVerificationToken.token)
+
+  // if(error){
+  //   return { 
+  //     error: "Something went wrong while sending verification email! Try to login to resend the verification email.", 
+  //   }
+  // }
+   return {success: "Verification email sent!"}
 }
 
 export const verifyEmail = async (email: string) => {

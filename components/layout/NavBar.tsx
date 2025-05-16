@@ -17,7 +17,7 @@ const NavBar = () => {
   const session = useSession()
   const isLoggedIn = session.status === 'authenticated'
   const path = usePathname()
-  // console.log('session>>>', session)
+  console.log('session>>>', session)
   useEffect(() => {
     if(!isLoggedIn && path){
       const  updateSession = async () => {
