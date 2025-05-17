@@ -15,9 +15,11 @@ import Alert from "../common/Alert";
 const RegisterForm = () => {
   const [isPending, startTransition] = useTransition()
   const [error,setError] = useState<string | undefined>("")
-  const [success, setSuccess] = useState<string | undefined>("")
+  const [ success, setSuccess] = useState<string | undefined>("");
 
-  const {  register,  handleSubmit, formState: { errors } } = useForm<RegisterSchemaType>({resolver: zodResolver(RegisterSchema )});
+  const {  register,  handleSubmit, formState: { errors } } = useForm<RegisterSchemaType>({
+    resolver: zodResolver(RegisterSchema)
+  });
 
   const onSubmit: SubmitHandler<RegisterSchemaType> =  (data)  => {
     // console.log('data>>>', data)
@@ -26,16 +28,15 @@ const RegisterForm = () => {
 
     startTransition(() => {
       // Perform the sign-up action here  
-      signUp(data).then((res) =>  {
-
+      signUp(data).then(res => {
         // console.log('res>>>', res)
-        setError(res.error)
-        setSuccess(res.success)
+        setError(res?.error)
+        
+        setSuccess(res?.success)
       })
     }) 
 
   }
-
 
   return ( 
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col max-w-[500px] m-auto mt-8 gap-2" >

@@ -19,6 +19,8 @@ model User {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
+  role UserRole @default(USER) @map("role")
+
   @@map("users")
 }
 
@@ -43,4 +45,29 @@ model Account {
 
   @@unique([provider, providerAccountId])
   @@map("accounts")
+}
+
+model EmailVerificationToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+  @@map("emailVerificationToken")
+}
+
+model PasswordResetToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+  @@map("passwordResetToken")
+}
+
+enum UserRole {
+  ADMIN
+  USER
 }
